@@ -1,7 +1,9 @@
 # Computational Data Science
-## INTRODUCTION
 
-This is my backup of all 12 exercises of Simon Fraser University's CMPT 353 course, the topic is about computational data science.
+## Introduction
+
+- This is my backup of all 12 exercises of Simon Fraser University's CMPT 353 course, the topic is about computational data science.
+- The instructor is Dr. Greg Baker.
 
 ## Contents
 
