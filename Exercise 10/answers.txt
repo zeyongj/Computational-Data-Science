@@ -1,0 +1,61 @@
+Q&A of Exercise 10
+
+1.
+Q: How long did your reddit_averages.py take with (1) the reddit-0 data set and effectively no work, (2) no schema specified and not caching (on reddit-2 for this and the rest), (3) with a schema but not caching, (4) with both a schema and caching the twice-used DataFrame? [The reddit-0 test is effectively measuring the Spark startup time, so we can see how long it takes to do the actual work on reddit-2 in the best/worst cases.]
+A: I run the program on my personal computer, with the configuration of 15891 MB of memory and Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz.
+(1) the reddit-0 data set and effectively no work (no schema specified and not caching): 
+Output:
+real	0m11.702s
+user	0m38.168s
+sys	0m0.989s
+Wall-clock Time: 0m11.702s
+the reddit-0 data set and effectively no work (with a schema but not caching):
+Output:
+real	0m12.905s
+user	0m43.334s
+sys	0m1.358s
+Wall-clock Time: 0m12.905s
+the reddit-0 data set and effectively no work (with both a schema and caching the twice-used DataFrame:):
+Output:
+real	0m12.697s
+user	0m42.499s
+sys	0m1.183s
+Wall-clock Time: 0m12.697s
+
+No matter we use schema or cache, the running time of reddit-0 is similar. With no schema specified and not caching, it even runs the fastest. Hence, it effectively no work!
+
+(2) no schema specified and not caching (on reddit-2 for this and the rest):
+Output:
+real	0m22.311s
+user	0m56.463s
+sys	0m1.256s
+Wall-clock Time: 0m22.311s
+
+(3) with a schema but not caching:
+Output:
+real	0m18.799s
+user	0m51.456s
+sys	0m1.198s 
+Wall-clock Time: 0m18.799s
+
+(4) with both a schema and caching the twice-used DataFrame: 
+Output:
+real	0m15.044s
+user	0m44.937s
+sys	0m1.267s
+Wall-clock Time: 0m15.044s
+
+Clearly, with schema and caching, the running time of reddit-2 becomes faster. If we use both (i.e. with both a schema and caching the twice-used DataFrame), it runs the fastest. So, I submit the version of having both a schema and caching the twice-used DataFrame.
+
+2.
+Q: Based on the above, does it look like most of the time taken to process the reddit-2 data set is in reading the files or calculating the averages?
+A: Based on the above, it looks like most of the time taken to process the reddit-2 data set is in reading the files. Looking back to reddit-0, if we have both schema and cache, the running time is about 12.697s. Given the size of reddit-0 is only 2 lines, we can ignore the calculation time for the sake of convenience. In other words, reading data needs at least 12.697s. But for reddit-2, the size becomes 74 MB. In this case, the total running time is about 15.044s. Even we assume an extreme situation that the improvement time (2.347s) is all for doing calculations, the time of reading the files still takes 84.40% of the total running time. This phenomenon also exists in the other two cases (no cache and no schema, no-cache but has a schema). Hence, we can conclude that most of the time taken to process the reddit-2 data set is in reading the files. 
+
+3.
+Q: Where did you use .cache() in your wikipedia_popular.py? [Hint: the answer had better be “once”… but where?]
+A: I use the function of .cache() after the group by function and before the join function. To be precise, the location of my cache function is in Line 59. 
+I tested the running time of the no-cache situation and the average time is 13.2796s. After testing the running time of cache functions in different locations, I found the following data.
+(Location #1) After filter, before the path to hour (i.e. Line 43): Average running time is 13.2504s;
+(Location #2) After the path to hour, before grouping (i.e. Line 50): Average running time is 12.7518s;
+(Location #3) After grouping, before joining (i.e. Line 59): Average running time is 12.6214s;
+Putting the cache function to the location which is after joining, before selecting and sorting has the lowest average running time, and reduces 4.74% of the running time. This phenomenon may be related to the join function. As the join function needs to merge two data frames, and the original data frame is so large, there is a heavy workload of reading and writing. Hence the joining function would take a long time. If the original one is temporarily stored by the program, the total running time would be lowered. After doing t-tests, the average running time of putting the cache function to Location #3 is significantly less than the running time of the no-cache situation or Location #1 (p-value = 0.01865 and 0.001175 respectively). But honestly, there is no significance difference between Location #2 and #3 (p-value = 0.377). Given Location #3 has the lowest average running time, I still choose Location #3.
