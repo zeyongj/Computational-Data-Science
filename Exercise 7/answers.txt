@@ -1,0 +1,13 @@
+Q&A of Exercise 7
+
+1.
+Q: Looking at your dog-rates.ipynb, do you think the residuals are close enough to be normal to look at the OLS p-value? Can you reasonably conclude that the ratings are increasing?
+A: Looking at your dog-rates.ipynb, I do NOT think the residuals are close enough to be normal to look at the OLS p-value. 
+According to the graph, it is clear that the residuals are skewed to the left and not symmetric. After conducting a QQ plot of residuals and normality test, residuals are NOT normally distributed. Given the OLS is based on the normal-distributed residuals, the requirement of OLS does NOT satisfied. So, we cannot look at the OLS p-value.
+I can CONCLUDE that the ratings are increasing. 
+Because the 95% Confidence Interval of slope is 0.0000000230 +/- 0.0000000018. So, we are 95% confident that the slope lies in an interval whose infimum (i.e. greastest lower bound) larger than 0. And therefore, the ratings are increasing.
+
+2.
+Q: Do you think that the new “better” prediction is letting the Kalman filter do a better job capturing the true signal in the noise?
+A: I think the new “better” prediction is letting the Kalman filter DO a better job capturing the true signal in the noise. 
+Because with nice parameters tuning, the Kalman filter has a lower sum of residuals (i.e. Kalman is more precise and able to capture the true signal in the noise), and we could make a good prediction in the next (future) value. 
