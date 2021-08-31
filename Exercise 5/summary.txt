@@ -1,0 +1,69 @@
+SUMMARY
+
+Data Summry of The First Dataset:
+The mean of x variable is 8.717696;
+The mean of y variable is 12.522874;
+The standard deviation of x variable is 12.155517;
+The standard deviation of y variable is 6.639964;
+The range of x variable is [-22.635878, 35.237055];
+The range of y variable is [-2.565088, 27.384153];
+The correlation between the x and y variables are 0.950326.
+One Sentence Description of Dataset 1:
+According to the coorelation value and the scatter plot of the first dataset, the two variables have strong linear correlation.
+
+Data Summry of The Second Dataset:
+The mean of x variable is -0.710787;
+The mean of y variable is -0.748987;
+The standard deviation of x variable is 11.481584;
+The standard deviation of y variable is 6.257918;
+The range of x variable is [-33.271113, 27.647000];
+The range of y variable is [-18.621804, 14.147315];
+The correlation between the x and y variables are 0.955153.
+One Sentence Description of Dataset 2:
+According to the coorelation value and the scatter plot of the second dataset, the two variables have strong linear correlation.
+
+Data Summry of The Third Dataset:
+The mean of x variable is 0.968907;
+The mean of y variable is 8.508535;
+The standard deviation of x variable is 2.235558;
+The standard deviation of y variable is 1.149301;
+The range of x variable is [-2.449064, 4.518885];
+The range of y variable is [6.641734, 10.551871];
+The correlation between the x and y variables are 0.981937.
+One Sentence Description of Dataset 3:
+According to the coorelation value and the scatter plot of the third dataset, although the two variables have strong linear correlation, there are 4 clusters on the graph.
+
+Data Summry of The Fourth Dataset:
+The mean of x variable is 49.905086;
+The mean of y variable is 18.553837;
+The standard deviation of x variable is 28.508611;
+The standard deviation of y variable is 16.545896;
+The range of x variable is [0.000000, 87.376700];
+The range of y variable is [0.000000, 44.565040];
+The correlation between the x and y variables are -0.081193.
+One Sentence Description of Dataset 4:
+According to the coorelation value and the scatter plot of the fourth dataset,there is NO linear correlation, but the graph is the logo of Simon Fraser University, SFU.
+
+Data Summry of The Fifth Dataset:
+The mean of x variable is 49.909994;
+The mean of y variable is 18.555525;
+The standard deviation of x variable is 28.500001;
+The standard deviation of y variable is 16.540796;
+The range of x variable is [4.337892, 91.052863];
+The range of y variable is [0.055498, 49.934197];
+The correlation between the x and y variables are -0.088236.
+One Sentence Description of Dataset 5:
+According to the coorelation value and the scatter plot of the fourth dataset,there is NO linear correlation, but on vertical view, there are 5 clusters.
+
+Data Summry of The Sixth Dataset:
+The mean of x variable is 7.216155;
+The mean of y variable is 7.602215;
+The standard deviation of x variable is 11.921599;
+The standard deviation of y variable is 11.764382;
+The range of x variable is [-24.333821, 35.402139];
+The range of y variable is [-22.956357, 36.079874];
+The correlation between the x and y variables are 0.935069.
+One Sentence Description of Dataset 6:
+According to the coorelation value and the scatter plot of the fourth dataset,the two variables have strong linear correlation, but there are two outliers which are away from the regression line.
+
+END OF SUMMARY

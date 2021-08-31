@@ -1,0 +1,23 @@
+Q&A of Exercise 5
+
+1. 
+Q: Which of the four transforms suggested got you the closest to satisfying the assumptions of a T-test?
+A: I chose the transform of np.sqrt, i.e. squared root, because transformed data normality p-values are 0.0369 0.108, which are the closest to the default significance level. And the data of weekend is now normally distributed. If the significance level decreased to 0.01, the null hypothesis of two variables in the t-test would not be rejected.
+
+2.
+Q: I gave imprecise English translations of what the by-week test and the Mann-Whitney test were testing. Do the same for the original T-test, and the transformed data T-test. That is, describe what the conclusion would be if you could reject the null hypothesis in those tests.
+A: Given the default significance level is 0.05, initial T-test p-value is 1.3e-58, original data normality p-values are 1.01e-07 & 0.00152, and Mann-Whitney U-test p-value is 8.62e-53. We reject the null hypothesis in those tests. It means that the population means of two groups (weekday and weekend) are NOT equal, and both of the distributions of the two groups are NOT normal. Furthermore, the distributions of the two groups are NOT equal.
+
+3.
+Q: Of the four approaches, which do you think does a better job of getting an answer for the original question: “are there a different number of Reddit comments posted on weekdays than on weekends?” Briefly explain why. (It's not clear to me that there is a single correct answer to this question.)
+A: I think the Central Limit Theorem option does a better job of getting an answer for the original question. The normality test is very sensitive to outliers and given there might be some bias or error when collecting data as well as the issue of sample size, the normality test is easy to be rejected, and we could hardly have a piece of strong evidence to answer the original question. But, the central limit theorem states an ideal circumstance that if you have a population with mean μ and standard deviation σ and take sufficiently large random samples from the population with replacement, then the distribution of the sample means will be approximately normally distributed [1]. 
+According to the output, weekly data normality p-values are 0.308 and 0.153, weekly data equal-variance p-value is 0.204. It means the CLT holds and when the sample size is large enough, the distributions of two groups are normal. But when we look at the weekly T-test p-value, the result is 1.34e-34. So, we still need to reject the null hypothesis even in such an ideal situation. In other words, even in an ideal situation, the population means of two groups (weekday and weekend) are NOT equal. As the number of weekdays is about 2.6 times larger than the number of weekends, when there are lots of dates, the gap between Reddit comments posted on weekdays and weekends would be further enlarged. And this assertion provides us with strong evidence that there are a DIFFERENT number of Reddit comments posted on weekdays than on weekends.
+
+4.
+Q: When are more Reddit comments posted in /r/canada, on average weekdays or weekends?
+A: According to the histogram of this dataset, as well as the result from the Central Limit Theorem, we can guess that on average weekdays there are more Reddit comments posted in /r/canada. But given we just use the data of this dataset to predict the population without any test, this estimation may be far away from the truth.
+
+References
+[1] W. W. LaMorte, "Central Limit Theorem," Boston University School of Public Health, 24 July 2016. [Online]. Available: https://sphweb.bumc.bu.edu/otlt/mph-modules/bs/bs704_probability/BS704_Probability12.html. [Accessed 17 June 2021].
+
+
