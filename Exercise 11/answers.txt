@@ -1,0 +1,35 @@
+Q&A of Exercise 11
+
+1.
+Q: In your reddit_relative.py, what intermediate results did you .cache()? Briefly describe what would have happened if you hadn't used .cache() anywhere. (No need to time it, unless you really want to.)
+A: According to the findings in the last exercise, I put the after the group by function and before the join function. And I believe that using cache could reduce the running time compared to the program without cache because the program with cache does not need to calculate the data frames twice. 
+After running programs on my personal computer, with the configuration of 15891 MB of memory and Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz, I collect the following data.
+Wtih cache on both averages and max_relative_score:
+real	0m11.538s
+user	0m51.122s
+sys	0m1.404s
+Wtih cache on only averages:
+real	0m11.366s
+user	0m49.717s
+sys	0m1.393s
+Wtih cache on only max_relative_score:
+real	0m11.501s
+user	0m50.975s
+sys	0m1.368s
+Without cache:
+real	0m11.897s
+user	0m54.780s
+sys	0m1.233s
+Unfortunately, the running time of programs with cache is not significantly less than that of the program with no cache. This phenomenon may be due to the size of reddit-1. Given the size of the data set of reddit-1 is only 1.2 Mb, the majority of running time was spent on reading data. In other words, we can ignore the calculation time for the sake of convenience. But the function of cache does us a favour on calculations. Since calculations did not take some time in the beginning, the improvement of calculations could not lead to a significant decrease in the total running time. But I think with the growth of the size of the data set, the decrease of the total running time would be more significant.
+
+2.
+Q: How did marking DataFrames for broadcast affect the running time of the “best author” program above?
+A: On ASB9804-a05 of CSIL, with broadcast:
+real	0m57.908s
+user	0m37.472s
+sys	0m2.320s
+On ASB9804-a05 of CSIL, without broadcast:
+real	1m1.518s
+user	0m36.296s
+sys	0m2.251s
+Hence, marking DataFrames for broadcast could reduce the running time of the “best author” program above. But the improvement is not so significant (only 3.61 seconds).
