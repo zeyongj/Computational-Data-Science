@@ -1,7 +1,7 @@
 # Computational Data Science
 ## INTRODUCTION
 
-This is my backup of materials of Simon Fraser University's CMPT 363 course, the topic is about user interface design.
+This is my backup of materials of Simon Fraser University's CMPT 353 course, the topic is about computational data science.
 
 ## Contents
 
