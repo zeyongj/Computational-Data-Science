@@ -29,6 +29,12 @@ This is my backup of materials of Simon Fraser University's CMPT 363 course, the
     
     Exercise 12
 
+## Libraries
+
+- numpy
+- pandas
+- matplotlib
+
 ## License
 
 This work is licensed under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) (or any later version). 

@@ -1,0 +1,16 @@
+Q&A of Exercise 1
+Instructions: Answer these questions in a file answers.txt. [Generally, these questions should be answered in a few sentences each.]
+
+1. 
+Question: Where you did the same calculations with NumPy and Pandas, which did you find easier to work with? Which code do you think is easier to read?
+Answer: I find Pandas are easier to work with, as it is more suitable to deal with tabular values and the return format looks better than Pandas. 
+I think the codes of Pandas are easier to read, as there are fewer attributes in functions, and the codes are more similar to the human languages.
+
+2. 
+Question: What were the running times of the two pivot_months_* functions? How can you explain the difference?
+Answer: According to the results: Pandas cost 21.3 ms ± 875 µs per loop (mean ± std. dev. of 7 runs, 10 loops each) and loops cost 526 ms ± 5.91 ms per loop (mean ± std. dev. of 7 runs, 1 loop each).
+Pandas run much faster than loops. It is because that Pandas is built on the NumPy library and written in languages like Python, Cython, and C [1]. In other words, Pandas are built on the lower layer, which makes them run faster.
+Additionally, there are no loops in the Pandas function, which reduces the running time as well.
+
+References
+[1] vanshgaur14866, "Difference between Pandas VS NumPy," GeeksforGeeks, 24 October 2020. [Online]. Available: https://www.geeksforgeeks.org/difference-between-pandas-vs-numpy/. [Accessed 20 May 2021].
