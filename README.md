@@ -85,4 +85,4 @@ online at: http://www.sfu.ca/policies/gazette/student/s10-01.html.
 
 Zeyong Jin
 
-August 25th, 2021
+August 31rd, 2021
