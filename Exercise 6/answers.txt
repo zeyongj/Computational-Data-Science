@@ -1,0 +1,58 @@
+Q&A of Exercise 6
+
+1.
+Q: In the A/B test analysis, do you feel like we're p-hacking? How comfortable are you concluding p < 0.05?
+A: According to the definition, p-hacking means getting expected output via manual manipulation of data or using only one test and ignoring others. 
+Based on our A/B test analysis I DO NOT feel we are p-hacking, as we collect and analyze data in legal methods.
+I am NOT comfortable concluding p < 0.05. 
+Only the last Mann Whitney U Test gives us a p-value that is less than the significance level, and the two values are so close. Our other three tests show we cannot reject the null hypothesis, and I cannot ignore these outputs. Hence, I cannot conclude as we do not have enough strong evidence. Otherwise, I committed p-hacking.
+
+2.
+Q: If we had done T-tests between each pair of sorting implementation results, how many tests would we run? If we looked for p < 0.05 in them, what would the probability be of having any false conclusions, just by chance? That's the effective p-value of the many-T-tests analysis. [We could have done a Bonferroni correction when doing multiple T-tests, which is a fancy way of saying “for m tests, look for significance at α/m”.]
+A: The number of tests we would run is 21. The steps are as follows.
+	Given the number of sorting is 7. According to the combination rule, the total number of tests equals 7C2. By fundamental mathematics, 7C2 = (7 * 6) / (2 * 1) = 21. Hence, the number of tests we would run is TWENTY-ONE (i.e. 21).
+The probability of having any false conclusions is 0.6954. The steps are as follows.
+	Assume Event A = {No false conclusion}. Then, Event A-bar = {At least one false conditions}, which is what we want. By Rule of Substraction, P(A-bar) = 1 - P(A). Given there are 21 tests, each test is mutual independent. By Rule of Multiplication, P(A) = 0.95^21 = 0.3406. Hence, P(A-bar) = 1 - 0.3406 = 0.6954. And therefore, the probability be of having any false conclusions is 0.6954.
+The effective p-value is less than 2.3810 * 10^-3. The steps are as follows.
+	According to the definition of multiple tests, if the family alpha value is 0.05, then for each test, the alpha-test value is 0.05 / (nC2). In this case, the alpha-test is (0.05 / 21) = 2.3810e-3. So, we need to look at those p-values which are less than 2.3810e-3. And these are effective p-value.
+
+3.
+Q: Give a ranking of the sorting implementations by speed, including which ones could not be distinguished. (i.e. which pairs could our experiment not conclude had different running times?)
+A: According to the output:
+                	Avaerage Running Time  	Rank
+qs1		0.020683     		2
+qs2		0.028078     		6
+qs3		0.027853     		5
+qs4		0.027327     		4
+qs5		0.026861     		3
+merge1		0.029887     		7
+partition_sort	0.017105     		1
+
+        Multiple Comparison of Means - Tukey HSD, FWER=0.05
+====================================================================
+    group1         group2     meandiff p-adj   lower   upper  reject
+           qs2            qs3  -0.0002 0.7745 -0.0007  0.0002  False
+           qs4            qs5  -0.0005 0.0581 -0.0009     0.0  False
+
+We can conclude that the ranking is: partition_sort > qs1 > qs5 (or: qs4) > qs4 (or qs5) > qs3 (or: qs2) > qs2 (or: qs3) > merge1.
+The pairs could our experiment not conclude had different running times are (qs4, qs5) and (qs3, qs2).
+
+But, the output varies. The following is another possible output.
+                	Avaerage Running Time	Rank
+qs1		0.022181			2
+qs2		0.030256			6
+qs3		0.030234			5
+qs4		0.029491			4
+qs5		0.028462			3
+merge1		0.031817			7
+partition_sort	0.018206			1
+
+ Multiple Comparison of Means - Tukey HSD, FWER=0.05
+====================================================================
+    group1         group2     meandiff p-adj   lower   upper  reject
+           qs2            qs3     -0.0    0.9 -0.0006  0.0006  False
+
+In this case, we can conclude that the ranking is: partition_sort > qs1 > qs5 > qs4 > qs3 (or: qs2) > qs2 (or: qs3) > merge1.
+The pairs could our experiment not conclude had different running times is (qs3, qs2).
+
+The ranking maintains while the undistinguished pairs change. I think a reason that causes this situation is the random numbers using in data creation. Perhaps sometimes the random numbers are easy to sort, and other times are not. 
