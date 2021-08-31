@@ -34,6 +34,7 @@ This is my backup of all 12 exercises of Simon Fraser University's CMPT 353 cour
 - numpy
 - pandas
 - matplotlib
+- sys
 
 ## License
 
