@@ -1,0 +1,15 @@
+Q&A of Exercise 4
+
+1. 
+Q: Based on your results for the last question, do you think daily temperatures are a good way to predict population density? Briefly explain why or why not.
+A: No, daily temperatures are not a good way to predict population density. Because I computed the correlation between average daily-high temperature and population density, and the result I got is -0.01371, meaning that this is a bad correlation. 
+Thus it is not a good idea to predict one based on the other, vice versa.
+
+2.
+Q: The larger data file (stations.json.gz) was kept compressed on disk throughout the analysis. Decompressing every time we run the program seems inefficient. Why might this be faster than working with an uncompressed .json data?
+A: According to CMPT 300: Operating System I, we know that memory read/write is much faster than hard disk read/write [1]. 
+If we are working with an uncompressed .json data stored on the disk, then we have to do a lot of disk I/O because we have to load the whole file into the memory, which is inefficient. However, when working with a compressed data file, we can do less disk I/O because we can load it into the memory and do decompressing in memory [2], which is much faster than disk I/O.
+
+References
+[1] H. Khangura, "cmpt300_lecture02 - Compatibility Mode," 18 May 2021. [Online]. Available: https://coursys.sfu.ca/2021su-cmpt-300-d1/pages/lecture02/view. [Accessed 11 June 2021].
+[2] Ben N, "Are files that use NTFS compression decompressed onto disk or into memory?," Stack Exchange, 4 July 2016. [Online]. Available: https://superuser.com/questions/1096885/are-files-that-use-ntfs-compression-decompressed-onto-disk-or-into-memory. [Accessed 11 June 2021].
