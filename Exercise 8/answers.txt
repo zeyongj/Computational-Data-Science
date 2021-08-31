@@ -1,0 +1,44 @@
+Q&A of Exercise 8
+
+1.
+Q: Which model did the best for the colour-prediction task? Can you give a theory about why? Do you have any theory about why RGB/LAB/HSV worked better for different models?
+A: According to the results, the knn model did the best for the colour-prediction task. 
+The reason why knn did better than Bayes is that optimizing locally is the inherent nature of knn. Knn is also a flipside so that outliers cannot kill the performance. In other words, knn is robust and less sensitive to outliers. Additionally, Knn is most likely to overfit, and hence adjusting ‘k’ to maximize test set performance can improve accuracy rate. Bayes is generative but not discriminative, so it cannot perform as well as knn [1].
+There is no significant difference between the accuracy scores of knn and random forest. But the score of knn is usually slightly higher than the random forest. It may be due to my parameter tuning or the distribution and characteristics of data. 
+According to the results, LAB/HSV worked better than RGB among these three models because of the robustness of the algorithm. Compared to RGB, HSV and LAB separate luma, or the image intensity, from chroma or the colour information. In other words, HSV and LAB separate colour from intensity [2]. But in RGB colour space, the shadow part will most likely have very different characteristics than the part without shadows [3]. And therefore, using only the Hue component of HSV makes the algorithm LESS sensitive (if not invariant) to lighting variations. Using the AB channels represent the colour and Euclidean distances in AB space better match the human perception of colour. Again, ignoring the L channel (Luminance) makes the algorithm more robust to lighting differences [4].
+The reason why the score of RGB is also acceptable is that RGB has to do with "implementation details" regarding the way RGB displays colour, and RGB is the way computers treat colour. So, computers can deal with RGB files quickly, and get a relatively good result if there are not some other improved methods [5].
+
+2.
+Q: Have a look at the cities in your validation data where the weather model makes the wrong prediction. Do you feel like the model is making reasonable mistakes? Can you think of any weather features that we could potentially add to make better predictions?
+A: One result is shown as follows.
+The score of the selected model is:    0.734483
+              truth      prediction
+801          Regina       Saskatoon
+563        Montreal          Ottawa
+1076       Victoria       Vancouver
+947         Seattle        Portland
+808          Regina       Saskatoon
+...             ...             ...
+830          Regina       Saskatoon
+75          Atlanta  Raleigh Durham
+908       Saskatoon        Winnipeg
+426          London         Chicago
+868   San Francisco     Los Angeles
+
+[77 rows x 2 columns]
+
+According to the result, there are only 77 wrong records. So, I think we make reasonable mistakes. After executing for 10 times, the mean accuracy is about 0.731034, 95% confidence interval is (0.7110284, 0.7510404). In other words, the performance of our model is moderate. And therefore, it is likely the classifier mistakes one label to another if the two labels are close from the perspective of the model. 
+According to the data posted on the Environment Canada website [6], I think the weather features that we could potentially add to make better predictions are the following: High/Low/Average Wind (km/h) for each month, High/Low/Average Humidex for each month, High/Low/Average Relative humidity (%) for each month, High/Low/Average Dewpoint (°C) for each month, High/Low/Average Pressure (kPa) for each month, High/Low/Average Visibility (km) for each month, and other weather conditions if necessary. But with so many attributes, we must make a good parameter tuning to avoid overfitting.
+
+
+References
+
+[1] 	P. Srikanth, "Classification (machine learning): When should I use a K-NN classifier over a Naive Bayes classifier?," Quora, 30 May 2016. [Online]. Available: https://www.quora.com/Classification-machine-learning-When-should-I-use-a-K-NN-classifier-over-a-Naive-Bayes-classifier. [Accessed 9 July 2021].
+[2] 	Dima, "Why do we use the HSV colour space so often in vision and image processing?," Stack Exchange, 22 June 2012. [Online]. Available: https://dsp.stackexchange.com/questions/2687/why-do-we-use-the-hsv-colour-space-so-often-in-vision-and-image-processing. [Accessed 9 July 2021].
+[3] 	penelope, "Why do we use the HSV colour space so often in vision and image processing?," Stack Exchange, 22 June 2012. [Online]. Available: https://dsp.stackexchange.com/questions/2687/why-do-we-use-the-hsv-colour-space-so-often-in-vision-and-image-processing. [Accessed 9 July 2021].
+[4] 	nimrodm, "Why do we use the HSV colour space so often in vision and image processing?," Stack Exchange, 22 June 2012. [Online]. Available: https://dsp.stackexchange.com/questions/2687/why-do-we-use-the-hsv-colour-space-so-often-in-vision-and-image-processing. [Accessed 9 July 2021].
+[5] 	heltonbiker, "Why do we use the HSV colour space so often in vision and image processing?," Stack Exchange, 23 June 2012. [Online]. Available: https://dsp.stackexchange.com/questions/2687/why-do-we-use-the-hsv-colour-space-so-often-in-vision-and-image-processing. [Accessed 9 July 2021].
+[6] 	Environment Canada, "Vancouver Int'l Airport, British Columbia," Environment Canada, 9 July 2021. [Online]. Available: https://weather.gc.ca/past_conditions/index_e.html?station=yvr. [Accessed 9 July 2021].
+
+
+
