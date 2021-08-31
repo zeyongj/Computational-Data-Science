@@ -1,0 +1,11 @@
+Q&A of Exercise 2:
+1. 
+Question: In the hint above, what is the result of the calculation data['timestamp']*fit.slope + fit.intercept? What is the type, and describe the values?
+Answer: It is a linear regression with a slope of 3.515929974847721e-08 and an intercept of -40.46415480898916. The equation can be interpreted as the estimated rating equals 3.515929974847721e-08 * timestamp - 40.46415480898916.
+The variable type is double (float64). Given the default linear regression equation is y = ax + b, a equals the slope, b equals the intercept. And the value is the estimated value of the rating.
+
+2.
+Question: In the same hint, why does this produce a fit line on the graph? Why are the created_at values and timestamp values paired correctly to make points on the plot?
+Answer: The reason why created_at values and timestamp values are paired is that timestamp is calculated directly from the created_at via the timestamp() function. And this function generates a bijective mapping from date to timestamp, hence each timestamp is linked to exactly a unique date. 
+Given that timestamp and rating are both numerical variables, while the date is a categorical variable. We know that a linear regression could only be generated between two numerical variables, hence combining the timestamp and the rating produces a fit line on the graph.
+Since the date and the timestamp is bijective (i.e. identical), the fit between the date and the rating is correct.
